@@ -16,6 +16,7 @@ class ExpenseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      tileColor: Colors.white,
       title: Text(name),
       subtitle: Text('${dateTime.day}/${dateTime.month}/${dateTime.year}'),
       trailing: Text(

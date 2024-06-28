@@ -25,8 +25,8 @@ class ExpenseSummary extends StatelessWidget {
     return Consumer<ExpenseData>(
       builder: (context, value, child) {
         double maxY = 100000;
-        if (Provider.of<ExpenseData>(context, listen: false).getTotalAmountThisWeek().toDouble() > 100000) {
-          maxY = maxY * 10;
+        if (Provider.of<ExpenseData>(context, listen: false).getTotalAmountThisWeek().toDouble() > 50000) {
+          maxY = maxY * 2;
         }
         return SizedBox(
           height: 230,

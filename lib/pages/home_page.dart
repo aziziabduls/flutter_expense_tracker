@@ -169,15 +169,16 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: Colors.black,
+            // backgroundColor: Colors.black,
             toolbarHeight: 80,
+            centerTitle: false,
             title: const Text(
               'Expense Tracker',
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+              // style: TextStyle(
+              //   fontSize: 30,
+              //   color: Colors.white,
+              //   fontWeight: FontWeight.bold,
+              // ),
             ),
           ),
           body: value.getAllExpenseList().isEmpty
@@ -217,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                                   .toDouble(),
                             ).toString(),
                             style: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -232,45 +233,48 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ExpenseSummary(startOfWeek: value.startOfWeekDate()),
                     const SizedBox(height: 50),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: value.getAllExpenseList().length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              // edit
-                              debugPrint('edit');
-                            },
-                            child: Slidable(
-                              key: ValueKey(index),
-                              endActionPane: ActionPane(
-                                extentRatio: 0.2,
-                                motion: const DrawerMotion(),
-                                children: [
-                                  SlidableAction(
-                                    backgroundColor: Colors.red,
-                                    onPressed: (context) {
-                                      Provider.of<ExpenseData>(context, listen: false).removeNewExpanse(
-                                        value.overallExpenseList[index],
-                                      );
-                                    },
-                                    icon: Icons.delete,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                ],
+                    Expanded(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          itemCount: value.getAllExpenseList().length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                // edit
+                                debugPrint('edit');
+                              },
+                              child: Slidable(
+                                key: ValueKey(index),
+                                endActionPane: ActionPane(
+                                  extentRatio: 0.2,
+                                  motion: const DrawerMotion(),
+                                  children: [
+                                    SlidableAction(
+                                      backgroundColor: Colors.red,
+                                      onPressed: (context) {
+                                        Provider.of<ExpenseData>(context, listen: false).removeNewExpanse(
+                                          value.overallExpenseList[index],
+                                        );
+                                      },
+                                      icon: Icons.delete,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                child: ExpenseTile(
+                                  name: value.getAllExpenseList()[index].name,
+                                  amount: value.getAllExpenseList()[index].amount,
+                                  dateTime: value.getAllExpenseList()[index].dateTime,
+                                ),
                               ),
-                              child: ExpenseTile(
-                                name: value.getAllExpenseList()[index].name,
-                                amount: value.getAllExpenseList()[index].amount,
-                                dateTime: value.getAllExpenseList()[index].dateTime,
-                              ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],
