@@ -169,16 +169,11 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            // backgroundColor: Colors.black,
+            scrolledUnderElevation: 0,
             toolbarHeight: 80,
             centerTitle: false,
             title: const Text(
               'Expense Tracker',
-              // style: TextStyle(
-              //   fontSize: 30,
-              //   color: Colors.white,
-              //   fontWeight: FontWeight.bold,
-              // ),
             ),
           ),
           body: value.getAllExpenseList().isEmpty
