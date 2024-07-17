@@ -1,6 +1,6 @@
 import 'package:expanse_tracker_app/bar_graph/bar_graph.dart';
 import 'package:expanse_tracker_app/data/expense_data.dart';
-import 'package:expanse_tracker_app/helper/date_time_helper.dart';
+import 'package:expanse_tracker_app/helper/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,13 +14,13 @@ class ExpenseSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String sun = convertDateTimeToString(startOfWeek.add(const Duration(days: 0)));
-    String mon = convertDateTimeToString(startOfWeek.add(const Duration(days: 1)));
-    String tue = convertDateTimeToString(startOfWeek.add(const Duration(days: 2)));
-    String wed = convertDateTimeToString(startOfWeek.add(const Duration(days: 3)));
-    String thu = convertDateTimeToString(startOfWeek.add(const Duration(days: 4)));
-    String fri = convertDateTimeToString(startOfWeek.add(const Duration(days: 5)));
-    String sat = convertDateTimeToString(startOfWeek.add(const Duration(days: 6)));
+    String sun = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 0)));
+    String mon = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 1)));
+    String tue = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 2)));
+    String wed = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 3)));
+    String thu = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 4)));
+    String fri = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 5)));
+    String sat = Utils.convertDateTimeToString(startOfWeek.add(const Duration(days: 6)));
 
     return Consumer<ExpenseData>(
       builder: (context, value, child) {

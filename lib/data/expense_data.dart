@@ -1,5 +1,5 @@
 import 'package:expanse_tracker_app/database/hive_database.dart';
-import 'package:expanse_tracker_app/helper/date_time_helper.dart';
+import 'package:expanse_tracker_app/helper/utils.dart';
 import 'package:expanse_tracker_app/models/expense_item.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +88,7 @@ class ExpenseData extends ChangeNotifier {
     };
 
     for (var expense in overallExpenseList) {
-      String date = convertDateTimeToString(expense.dateTime);
+      String date = Utils.convertDateTimeToString(expense.dateTime);
       double amount = double.parse(expense.amount);
 
       if (dailyExpenseSummary.containsKey(date)) {
